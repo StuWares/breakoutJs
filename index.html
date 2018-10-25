@@ -158,6 +158,10 @@
                                 dy = -dy;
                                 b.status = 0;
                                 score++;
+                                if(score == brickRowCount*brickColumnCount) {
+                                    alert("You win, congratulations!");
+                                    document.location.reload();
+                                }
                             }
                         }
                    }
