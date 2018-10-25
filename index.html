@@ -106,8 +106,19 @@
                    dy = -dy;
                }
                else if(y + dy > canvas.height-ballRadius) {
-                   if( x > paddleX && x < paddleX + paddleWidth) {
+                   if( x > paddleX && x < paddleX + paddleWidth/2) {
                        dy = -dy * 1.1; // ball moves faster after each time it hits the paddle
+                       if(dx > 0) {
+                        dx = -dx;
+                       }
+                       
+                   }
+                   else if(x > paddleX && x > paddleX + paddleWidth/2 && x < paddleX + paddleWidth) {
+                       dy = -dy * 1.1;
+                       if(dx < 0) {
+                           dx = -dx;
+                       }
+                    
                    }
                    else {
                        lives--;
