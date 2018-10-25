@@ -137,6 +137,8 @@
                x += dx;
                y += dy;
 
+               requestAnimationFrame(draw);
+
            }
            
            // player  input event listners
@@ -200,7 +202,7 @@
                ctx.fillText("Lives: " + lives, canvas.width-65, 20);
            }
 
-           setInterval(draw, 10);
+           draw();
            //end main loop
         </script>
     </body>
