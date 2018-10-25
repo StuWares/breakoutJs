@@ -43,6 +43,7 @@
            var brickOffsetLeft = 30;
 
            var score = 0;
+           var lives = 3;
 
            // init brick field array
            var bricks = [];
@@ -92,6 +93,7 @@
                drawBall();
                drawPaddle();
                drawScore();
+               drawLives();
                collisionDetection();
             
                 // ball collision detection
@@ -107,8 +109,18 @@
                        dy = -dy * 1.1; // ball moves faster after each time it hits the paddle
                    }
                    else {
-                       alert("GAME OVER"); // alert window causes issues with reload in Chrome
-                       document.location.reload();
+                       lives--;
+                       if(!lives) {
+                           alert("GAME OVER");
+                           document.location.reload();
+                       }
+                       else {
+                           x = canvas.width/2;
+                           y = canvas.height-30;
+                           dx = 2;
+                           dy = -2;
+                           paddleX = (canvas.width-paddleWidth)/2;
+                       }
                    }
                }
 
@@ -130,6 +142,14 @@
            // player  input event listners
            document.addEventListener("keydown", keyDownHandler, false);
            document.addEventListener("keyup", keyUpHandler, false);
+           document.addEventListener("mousemove", mouseMoveHandler, false);
+
+           function mouseMoveHandler(e) {
+               var relativeX = e.clientX - canvas.offsetLeft;
+               if(relativeX > 0 && relativeX < canvas.width) {
+                   paddleX = relativeX - paddleWidth/2;
+               }
+           }
 
            function keyDownHandler(e) {
                if(e.keyCode == 39) {
@@ -172,6 +192,12 @@
                ctx.font = "16px Arial";
                ctx.fillStyle = "#0095DD";
                ctx.fillText("Score: "+ score, 8, 20);
+           }
+
+           function drawLives() {
+               ctx.font = "16px Arial";
+               ctx.fillStyle = "#0095DD";
+               ctx.fillText("Lives: " + lives, canvas.width-65, 20);
            }
 
            setInterval(draw, 10);
