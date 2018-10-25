@@ -45,6 +45,7 @@
 
            var score = 0;
            var lives = 3;
+           var lifeDisplay = "";
 
            // init brick field array
            var bricks = [];
@@ -193,7 +194,13 @@
                                 b.status = 0;
                                 score++;
                                 if(score == brickRowCount*brickColumnCount) {
-                                    alert("Congratulations! Score: " + score + " You won with " + lives + " lives remaining!");
+                                    if(lives == 1) {
+                                        lifeDisplay = "life";
+                                    }
+                                    else {
+                                        lifeDisplay = "lives";
+                                    }
+                                    alert("Congratulations! Score: " + score + " You won with " + lives + " " + lifeDisplay + " remaining!");
                                     document.location.reload();
                                 }
                             }
