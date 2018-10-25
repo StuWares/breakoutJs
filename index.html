@@ -13,6 +13,7 @@
         <canvas id="myCanvas" width="480" height="320"></canvas>
 
         <script>
+            // alt colour scheme #DC4405 , #0095DD
             // setting up the canvas
             var canvas = document.getElementById("myCanvas");
             var ctx = canvas.getContext("2d");
@@ -57,14 +58,14 @@
            function drawBall() {
                ctx.beginPath();
                ctx.arc(x, y, ballRadius, 0, Math.PI*2);
-               ctx.fillStyle = "#0095DD";
+               ctx.fillStyle = "#DC4405";
                ctx.fill();
                ctx.closePath();
            }
             function drawPaddle() {
                 ctx.beginPath();
                 ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);
-                ctx.fillStyle = "#0095DD";
+                ctx.fillStyle = "#DC4405";
                 ctx.fill();
                 ctx.closePath();
             }
@@ -78,7 +79,7 @@
                             bricks[c][r].y = brickY;
                             ctx.beginPath();
                             ctx.rect(brickX, brickY, brickWidth, brickHeight);
-                            ctx.fillStyle = "#0095DD";
+                            ctx.fillStyle = "#DC4405";
                             ctx.fill();
                             ctx.closePath();
                         }
@@ -192,13 +193,13 @@
 
            function drawScore() {
                ctx.font = "16px Arial";
-               ctx.fillStyle = "#0095DD";
+               ctx.fillStyle = "#DC4405";
                ctx.fillText("Score: "+ score, 8, 20);
            }
 
            function drawLives() {
                ctx.font = "16px Arial";
-               ctx.fillStyle = "#0095DD";
+               ctx.fillStyle = "#DC4405";
                ctx.fillText("Lives: " + lives, canvas.width-65, 20);
            }
 
